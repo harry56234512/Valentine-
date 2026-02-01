@@ -1,0 +1,74 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nidhi ❤️</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #fff0f3; font-family: 'Quicksand', sans-serif; overflow: hidden; }
+        .container { text-align: center; background: white; padding: 40px; border-radius: 30px; box-shadow: 0 10px 30px rgba(255, 75, 110, 0.2); max-width: 400px; }
+        h1 { color: #ff4b6e; font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 20px; }
+        .gif-container img { width: 200px; margin-bottom: 20px; border-radius: 15px; }
+        .buttons { display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; }
+        button { border: none; padding: 12px 25px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; font-weight: bold; }
+        #yesBtn { background-color: #ff4b6e; color: white; }
+        #noBtn { background-color: #e0e0e0; color: #555; }
+        .success-msg { display: none; }
+        .success-msg h1 { font-size: 3.5rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <div class="gif-container">
+            <img src="https://media.giphy.com" alt="Cute Bear">
+        </div>
+        <h1>Will you be my Valentine, Nidhi? 💖</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">Yes!</button>
+            <button id="noBtn" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <div class="container success-msg" id="successContainer">
+        <div class="gif-container">
+            <img src="https://media.giphy.com" alt="Cute Bear">
+        </div>
+        <h1>Yay! I love you Nidhi! ❤️</h1>
+        <p>I can't wait to spend the day with you! 🧸🍓</p>
+    </div>
+
+    <script>
+        let noCount = 0;
+        const noTexts = ["Are you sure?", "Think again... 🥺", "Pookie please!", "You're breaking my heart! 💔", "But I'll be so sad...", "Nidhi, please? 🌹"];
+        
+        function handleNo() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            // Change No button text
+            noBtn.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
+            
+            // Increase Yes button size
+            noCount++;
+            const newSize = 1.2 + (noCount * 0.4);
+            yesBtn.style.fontSize = `${newSize}rem`;
+            yesBtn.style.padding = `${12 + noCount * 5}px ${25 + noCount * 10}px`;
+        }
+
+        function celebrate() {
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('successContainer').style.display = 'block';
+            confettiEffect();
+        }
+
+        function confettiEffect() {
+            // Simple visual cue: the page background turns even pinker
+            document.body.style.background = "#ffccd5";
+        }
+    </script>
+</body>
+</html>
